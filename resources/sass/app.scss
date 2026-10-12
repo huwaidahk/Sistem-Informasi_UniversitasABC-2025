@@ -1,0 +1,84 @@
+/* resources/sass/app.scss */
+
+// --- 1. Variabel Kustom Tema Ungu-Hitam ---
+
+// Warna Dasar Palet
+$purple-dark: #6f42c1;   // Ungu Primer (Digunakan untuk tombol utama, highlight)
+$purple-light: #8e5bd6;  // Ungu Sekunder/Hover
+$dark-bg: #1a033b;       // Background gelap utama (Hampir hitam, seperti di Login)
+$dark-card: #31065f;     // Background card/navbar/sidebar (Ungu gelap)
+
+// Override Variabel Bootstrap Utama
+$body-bg: $dark-bg; 
+$body-color: #f8f9fa;    // Warna teks terang untuk kontras
+
+$primary: $purple-dark;  // Menggantikan warna primary default Bootstrap
+$secondary: $purple-light; // Menggantikan warna secondary default
+
+// Override untuk elemen UI (Card, Input, Table)
+$card-bg: $dark-card;
+$card-color: $body-color;
+$card-border-radius: 10px; // Memberi sudut yang sedikit membulat
+
+$table-bg: $dark-card;
+$table-color: $body-color;
+$table-border-color: rgba($body-color, 0.15); // Garis tabel samar
+$table-striped-bg: #411d73; // Warna baris striping sedikit berbeda
+
+$input-bg: rgba($dark-bg, 0.5); // Input field sedikit transparan
+$input-color: $body-color;
+$input-border-color: $primary;
+$input-placeholder-color: rgba($body-color, 0.7);
+
+// --- 2. Import Bootstrap ---
+
+// PENTING: Hapus tilde (~) di awal path agar Vite dapat menyelesaikannya dengan benar
+@import 'bootstrap/scss/bootstrap';
+
+// --- 3. Gaya Kustom Tambahan ---
+
+// Gaya umum untuk tombol ungu (btn-purple)
+.btn-purple {
+    background-color: $primary !important;
+    border-color: $primary !important;
+    color: white !important;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    &:hover {
+        background-color: $purple-light !important;
+        border-color: $purple-light !important;
+    }
+}
+
+// Gaya untuk tampilan Login/Signup (input field kustom)
+.form-control-custom {
+    background-color: rgba($dark-card, 0.5) !important;
+    border: 1px solid $primary !important;
+    color: white !important;
+}
+.form-control-custom::placeholder {
+    color: $input-placeholder-color !important;
+}
+
+// Gaya kustom untuk Sidebar/Layout Dashboard
+#sidebar-wrapper {
+    background-color: $dark-card !important; 
+}
+.list-group-item {
+    background-color: transparent !important;
+    color: #f8f9fa !important;
+    border: none !important;
+}
+.list-group-item.active {
+    background-color: $purple-dark !important;
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+// Gaya untuk tabel rekap (memastikan background gelap diterapkan)
+.table-dark {
+    --bs-table-bg: $dark-card;
+    --bs-table-color: $body-color;
+}
